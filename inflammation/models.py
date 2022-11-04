@@ -39,7 +39,8 @@ def daily_min(data):
     input: data,
     output: gives the min on data 
     """
-    return np.min(data, axis=0)
+    a = np.min(data, axis=0)
+    return a
 
 def patient_normalise(data):
     """Normalise patient data from a 2D inflammation data array."""
