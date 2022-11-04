@@ -29,3 +29,59 @@ def test_daily_mean_integers():
     # Need to use Numpy testing functions to compare arrays
     npt.assert_array_equal(daily_mean(test_input), test_result)
 
+
+def test_daily_max(data):
+    """Test that max function works for an array of positive integers."""
+    from inflammation.models import daily_mean
+
+    test_input = np.array([[1, 2],[3, 4],[5, 6]])                   
+                    
+    test_result = np.array([5, 6])
+
+    # Need to use Numpy testing functions to compare arrays
+    npt.assert_array_equal(test_daily_max(test_input), test_result)
+
+def test_daily_max_zeros():
+    """Test that mean function works for an array of zeros."""
+    from inflammation.models import daily_mean
+
+    test_input = np.array([[0, 0],
+                           [0, 0],
+                           [0, 0]])
+    test_result = np.array([0, 0])
+    npt.assert_array_equal(test_daily_max(test_input), test_result)
+    
+def test_daily_min(data):
+    """Test that max function works for an array of positive integers."""
+    from inflammation.models import daily_mean
+
+    test_input = np.array([[1, 2],[3, 4],[5, 6]])                   
+                    
+    test_result = np.array([1, 2])
+
+    # Need to use Numpy testing functions to compare arrays
+    npt.assert_array_equal(test_daily_min(test_input), test_result)
+
+def test_daily_min_zeros():
+    """Test that mean function works for an array of zeros."""
+    from inflammation.models import daily_mean
+
+    test_input = np.array([[0, 0],
+                           [0, 0],
+                           [0, 0]])
+    test_result = np.array([0, 0])
+    npt.assert_array_equal(test_daily_min(test_input), test_result)
+    
+def test_daily_min_string():
+    """Test for TypeError when passing strings"""
+    from inflammation.models import daily_min
+
+    with pytest.raises(TypeError):
+        error_expected = daily_min([['Hello', 'there'], ['General', 'Kenobi']])    
+          
+def test_daily_max_string():
+    """Test for TypeError when passing strings"""
+    from inflammation.models import daily_min
+
+    with pytest.raises(TypeError):
+        error_expected = daily_min([['Hello', 'there'], ['General', 'Kenobi']])
