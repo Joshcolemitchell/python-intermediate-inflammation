@@ -21,5 +21,12 @@ def visualize(data_dict):
         axes.plot(data)
 
     fig.tight_layout()
-
+    #plt.savefig("myfigure.png")
     plt.show()
+
+def display_patient_record(patient):
+    """Display data for a single patient."""
+    print("Patient name:",patient.name)
+    print('Day,Value')
+    for obs in patient.observations:   
+        print("Day:",obs.day,", obs:", obs.value)
