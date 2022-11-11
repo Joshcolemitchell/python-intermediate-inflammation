@@ -70,4 +70,9 @@ python --view", "loadJSON", "--patient", "4", "python-intermediate-inflammation/
 
 
 
-# Licence: a short description of and link to the software’s licence
+
+# License
+
+[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+To the extent possible under law, Josh Mitchell and Co. has waived all copyright and related or neighboring rights to this work.
