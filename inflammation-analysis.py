@@ -45,12 +45,13 @@ def main(args):
             assert os.path.exists(args.outfile),"Patient " + str(args.outfile) + " JSON file does not exist, please make one"
             patients_new = serializers.PatientJSONSerializer.load(args.outfile)
             # Check that we've got the same data back
-            print(patients_new[0])
+            print(len(patients_new))
+            for index in range(len(patients_new)):
+                for key in patients_new[index]:
+                    print(patients_new[index][key])
             #for patient_new, patient in zip(patients_new, patients):
             #   views.display_patient_record(patients) 
 
-              
-      
         elif args.view == 'saveJSON':    
             # save data to a JSON file
             print("saved to " + args.outfile)
