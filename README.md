@@ -31,6 +31,13 @@ TBD
 
 Installation/deployment: step-by-step instructions for setting up the software so it can be used
 Basic usage: step-by-step instructions that cover using the software to accomplish basic tasks
+
+To access records for a given patient,enter the following in bash:
+
+```python3 inflammation-analysis.py --view record --patient ## data/inflammation-##.csv```
+
+where ## is the 2-digit patient number.
+
 Contributing: for those wishing to contribute to the software’s development, this is an opportunity to detail what kinds of contribution are sought and how to get involved
 Contact information/getting help: which may include things like key author email addresses, and links to mailing lists and other resources
 Credits/Acknowledgements: where appropriate, be sure to credit those who have helped in the software’s development or inspired it
