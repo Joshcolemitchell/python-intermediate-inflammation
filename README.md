@@ -39,7 +39,7 @@ Licence: a short description of and link to the software’s licence
 
 ## Credits
 
-- Thanks to Matthew Bluteau and the helpful demonstrators. 
+- Thanks to Matthew Bluteau and the helpful demonstrators for teaching the Intermediate Python course. 
 - The Carpentries Incubator provided the platform for the course material.
 
 ## Citation
