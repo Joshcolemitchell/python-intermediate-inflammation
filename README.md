@@ -54,7 +54,7 @@ python --view", "loadJSON", "--patient", "4", "python-intermediate-inflammation/
 
 # Contributing: 
 
-
+I have no contribution here. 
 
 # Contact information/getting help: 
 
