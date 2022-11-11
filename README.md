@@ -40,7 +40,9 @@ Licence: a short description of and link to the software’s licence
 ## Credits
 
 - Thanks to Matthew Bluteau and the helpful demonstrators. 
+- The Carpentries Incubator provided the basis for the course material.
 
 ## Citation
 - Please cite [J. F. W. Herschel, 1829, MmRAS, 3, 177](https://ui.adsabs.harvard.edu/abs/1829MmRAS...3..177H/abstract) if you used this work in your day-to-day life.  
 - Please cite [C. Herschel, 1787, RSPT, 77, 1](https://ui.adsabs.harvard.edu/abs/1787RSPT...77....1H/abstract) if you actually use this for scientific work.
+- [The Carpentries Incubator](https://github.com/carpentries-incubator/proposals/#the-carpentries-incubator)
