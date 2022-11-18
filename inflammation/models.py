@@ -9,6 +9,11 @@ and each column represents a single day across all patients.
 
 import numpy as np
 
+class DayAlreadyExistsError(ValueError):
+    pass
+class PatientDoesNotExistError(ValueError):
+    pass
+
 
 def load_csv(filename):
     """Load a Numpy array from a CSV
@@ -85,6 +90,12 @@ class Person:
 
     def __str__(self):
         return self.name
+    
+    def __eq__(self, other):
+        if isinstance(other, Person):
+            return self.name == other.name
+        
+        return False
 
 class Patient(Person):
     """A patient in an inflammation study."""
@@ -103,8 +114,19 @@ class Patient(Person):
                 day = self.observations[-1].day + 1
             except IndexError:
                 day = 0
+
+        if day < 0:
+            raise ValueError
+
         new_observation = Observation(day, value)
-        self.observations.append(new_observation)
+
+        days = [observation.day for observation in self.observations]
+
+        if day in days:
+            raise DayAlreadyExistsError
+        else:
+            self.observations.append(new_observation)
+
         return new_observation
 
 class Doctor(Person):
@@ -120,7 +142,17 @@ class Doctor(Person):
             if patient.name == new_patient.name:
                 return
         self.patients.append(new_patient)
+
+    def remove_patient(self, del_patient : Patient):
         
+        i = 0
+        while i < len(self.patients):
+            if del_patient == self.patients[i]:
+                self.patients.pop(i)
+                return
+            i+=1
+        
+        raise PatientDoesNotExistError     
 
     
 ############ Library book classes

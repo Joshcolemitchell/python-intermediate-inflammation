@@ -118,3 +118,66 @@ def test_patient_normalise(test, expected, expect_raises):
             npt.assert_almost_equal(patient_normalise(test), np.array(expected), decimal=2)
     else:
         npt.assert_almost_equal(patient_normalise(test), np.array(expected), decimal=2)
+
+def tests_check_day_is_less_than_zero():
+    from inflammation.models import Patient
+
+    patient = Patient("test")
+
+    with pytest.raises(ValueError):
+        patient.add_observation(0, -1)
+
+def tests_check_if_observation_exists():
+    from inflammation.models import Patient
+    from inflammation.models import DayAlreadyExistsError
+
+    patient = Patient("test")
+
+    patient.add_observation(0, 1)
+    with pytest.raises(DayAlreadyExistsError):
+        patient.add_observation(0, 1)
+
+def tests_doctor_removes_patient_successfully():
+    from inflammation.models import Patient
+    from inflammation.models import Doctor
+
+    doctor = Doctor("Dr. Jones")
+    patient1 = Patient("Harry")
+    patient2 = Patient("James")
+
+    doctor.add_patient(patient1)
+    doctor.add_patient(patient2)
+    assert len(doctor.patients) == 2
+
+    doctor.remove_patient(patient2)
+    assert len(doctor.patients) == 1
+
+    assert doctor.patients[0].name == "Harry"
+
+def test_doctor_removes_not_existing_patient():
+    from inflammation.models import Patient
+    from inflammation.models import Doctor
+    from inflammation.models import PatientDoesNotExistError
+
+    doctor = Doctor("Dr. Jones")
+    patient1 = Patient("Harry")
+    patient2 = Patient("James")
+
+    doctor.add_patient(patient1)
+    doctor.add_patient(patient2)
+    assert len(doctor.patients) == 2
+
+    fake_patient = Patient("Sean")
+    with pytest.raises(PatientDoesNotExistError):
+        doctor.remove_patient(fake_patient)
+
+def test_doctor_removes_not_existing_patient_in_empty_list():
+    from inflammation.models import Patient
+    from inflammation.models import Doctor
+    from inflammation.models import PatientDoesNotExistError
+
+    doctor = Doctor("Dr. Jones")
+
+    fake_patient = Patient("Sean")
+    with pytest.raises(PatientDoesNotExistError):
+        doctor.remove_patient(fake_patient)
