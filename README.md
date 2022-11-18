@@ -50,7 +50,11 @@ python --view", "loadJSON", "--patient", "4", "python-intermediate-inflammation/
 
 
 ## Basic usage: step-by-step instructions that cover using the software to accomplish basic tasks
+To access records for a given patient,enter the following in bash:
 
+```python3 inflammation-analysis.py --view record --patient ## data/inflammation-##.csv```
+
+where ## is the 2-digit patient number.
 
 
 
