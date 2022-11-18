@@ -11,6 +11,8 @@ import numpy as np
 
 class DayAlreadyExistsError(ValueError):
     pass
+class PatientDoesNotExistError(ValueError):
+    pass
 
 
 def load_csv(filename):
@@ -88,6 +90,12 @@ class Person:
 
     def __str__(self):
         return self.name
+    
+    def __eq__(self, other):
+        if isinstance(other, Person):
+            return self.name == other.name
+        
+        return False
 
 class Patient(Person):
     """A patient in an inflammation study."""
@@ -134,7 +142,17 @@ class Doctor(Person):
             if patient.name == new_patient.name:
                 return
         self.patients.append(new_patient)
+
+    def remove_patient(self, del_patient : Patient):
         
+        i = 0
+        while i < len(self.patients):
+            if del_patient == self.patients[i]:
+                self.patients.pop(i)
+                return
+            i+=1
+        
+        raise PatientDoesNotExistError     
 
     
 ############ Library book classes
