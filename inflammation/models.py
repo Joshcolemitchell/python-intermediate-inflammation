@@ -103,6 +103,10 @@ class Patient(Person):
                 day = self.observations[-1].day + 1
             except IndexError:
                 day = 0
+
+        if day < 0:
+            raise ValueError
+
         new_observation = Observation(day, value)
         self.observations.append(new_observation)
         return new_observation
