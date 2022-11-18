@@ -110,11 +110,15 @@ class Patient(Person):
         if day < 0:
             raise ValueError
 
-        if day in self.observations:
-            raise DayAlreadyExistsError
-
         new_observation = Observation(day, value)
-        self.observations.append(new_observation)
+
+        days = [observation.day for observation in self.observations]
+
+        if day in days:
+            raise DayAlreadyExistsError
+        else:
+            self.observations.append(new_observation)
+
         return new_observation
 
 class Doctor(Person):

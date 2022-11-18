@@ -126,3 +126,13 @@ def tests_check_day_is_less_than_zero():
 
     with pytest.raises(ValueError):
         patient.add_observation(0, -1)
+
+def tests_check_if_observation_exists():
+    from inflammation.models import Patient
+    from inflammation.models import DayAlreadyExistsError
+
+    patient = Patient("test")
+
+    patient.add_observation(0, 1)
+    with pytest.raises(DayAlreadyExistsError):
+        patient.add_observation(0, 1)
