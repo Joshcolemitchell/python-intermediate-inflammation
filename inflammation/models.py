@@ -9,6 +9,9 @@ and each column represents a single day across all patients.
 
 import numpy as np
 
+class DayAlreadyExistsError(ValueError):
+    pass
+
 
 def load_csv(filename):
     """Load a Numpy array from a CSV
@@ -106,6 +109,9 @@ class Patient(Person):
 
         if day < 0:
             raise ValueError
+
+        if day in self.observations:
+            raise DayAlreadyExistsError
 
         new_observation = Observation(day, value)
         self.observations.append(new_observation)
