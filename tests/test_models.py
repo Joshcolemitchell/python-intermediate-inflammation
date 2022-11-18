@@ -118,3 +118,11 @@ def test_patient_normalise(test, expected, expect_raises):
             npt.assert_almost_equal(patient_normalise(test), np.array(expected), decimal=2)
     else:
         npt.assert_almost_equal(patient_normalise(test), np.array(expected), decimal=2)
+
+def tests_check_day_is_less_than_zero():
+    from inflammation.models import Patient
+
+    patient = Patient("test")
+
+    with pytest.raises(ValueError):
+        patient.add_observation(0, -1)
